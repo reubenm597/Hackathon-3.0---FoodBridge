@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketplace</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f6f6f6;
+    }
+
+    header {
+      background-color: #2ecc71;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+    }
+
+    .marketplace-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .food-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 250px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .food-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    .food-card img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .food-card h3 {
+      margin: 15px 0 10px;
+      color: #333;
+    }
+
+    .food-card p {
+      margin: 0 0 15px;
+      color: #666;
+    }
+
+    .food-card button {
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .food-card button:hover {
+      background-color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Marketplace</header>
+
+  <div class="marketplace-container" id="marketplaceContainer">
+    <!-- Food items will be dynamically inserted here -->
+  </div>
+
+  <script>
+    // Example food items
+    const foodItems = [
+      { name: "Rice Pack", description: "10kg of quality rice", image: "https://via.placeholder.com/250" },
+      { name: "Vegetable Basket", description: "Fresh seasonal vegetables", image: "https://via.placeholder.com/250" },
+      { name: "Bread Pack", description: "Assorted bread packs", image: "https://via.placeholder.com/250" }
+    ];
+
+    const container = document.getElementById("marketplaceContainer");
+
+    foodItems.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "food-card";
+      card.innerHTML = `
+        <img src="${item.image}" alt="${item.name}">
+        <h3>${item.name}</h3>
+        <p>${item.description}</p>
+        <button>Claim</button>
+      `;
+      container.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register as Recipient</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to right, #6dd5ed, #2193b0);
+      font-family: Arial, sans-serif;
+    }
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      background: #2193b0;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #6dd5ed;
+    }
+  </style>
+</head>
+<body>
+  <form id="recipientForm">
+    <h2>Register as Recipient</h2>
+    <input type="text" id="name" placeholder="Full Name" required><br>
+    <input type="email" id="email" placeholder="Email" required><br>
+    <input type="text" id="phone" placeholder="Phone Number" required><br>
+    <input type="text" id="address" placeholder="Address" required><br>
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('recipientForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const address = document.getElementById('address').value;
+
+      try {
+        const res = await fetch("http://localhost:5000/recipients", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, phone, address })
+        });
+
+        const data = await res.json();
+        alert(data.message || data.error);
+      } catch (err) {
+        console.error(err);
+        alert("Failed to register recipient");
+      }
+    });
+  </script>
+</body>
+</html>
