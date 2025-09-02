@@ -30,3 +30,6 @@ FoodBridge is designed to help organizations and individuals donate surplus food
 1. **Clone the repository**
    ```bash
    git clone https://github.com/reubenm597/Hackathon-3.0---FoodBridge.git
+
+## Live Demo
+https://hackathon-3-0-foodbridge.onrender.com/index.html
